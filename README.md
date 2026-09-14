@@ -22,3 +22,7 @@ pytest
 docker build -t pucpr-devops .
 docker run -d --name pucpr-devops -p 8000:8000 pucpr-devops
 ```
+
+## Observacao
+
+Projeto da disciplina de DevOps (PUCPR).
