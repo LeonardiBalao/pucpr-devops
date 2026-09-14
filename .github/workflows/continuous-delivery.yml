@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   deliver:
     runs-on: ubuntu-latest
@@ -17,3 +21,4 @@ jobs:
         with:
           name: pucpr-devops
           path: pucpr-devops.zip
+          if-no-files-found: error
