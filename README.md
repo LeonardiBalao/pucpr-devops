@@ -15,3 +15,10 @@ uvicorn app.main:app --reload --port 8000
 ```bash
 pytest
 ```
+
+## Docker
+
+```bash
+docker build -t pucpr-devops .
+docker run -d --name pucpr-devops -p 8000:8000 pucpr-devops
+```
