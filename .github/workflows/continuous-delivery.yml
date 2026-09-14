@@ -1,0 +1,24 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compactar artefato
+        run: zip -r pucpr-devops.zip app requirements.txt README.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pucpr-devops
+          path: pucpr-devops.zip
+          if-no-files-found: error
