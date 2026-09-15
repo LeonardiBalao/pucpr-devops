@@ -2,7 +2,6 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -18,3 +17,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         run: pytest
+
+  discord:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Commits
+        uses: Sniddl/discord-commits@v1.8
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          template: "avatar-with-link"
+          include-extras: true
